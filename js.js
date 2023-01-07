@@ -7,23 +7,22 @@ const count = +prompt("Введіть кількість елементів ма
 if (isNaN(count) || count <= 0) {
   console.log("Помилка");
 } else {
-  const array = new Array(count);
   let elements = prompt(`Введіть ${count} чисел через пробіл`);
   if (
     elements === null ||
-    elements.split(" ").length !== count ||
-    elements.split(" ").filter((e) => !isNaN(+e) && e.trim() !== "").length !== count
+    elements.trim().split(" ").length !== count ||
+    elements
+      .trim()
+      .split(" ")
+      .filter((e) => !isNaN(+e) && e.trim() !== "").length !== count
   ) {
     console.log("Помилка");
   } else {
-    elements = elements.split(" ");
-    for (let i = 0; i < elements.length; i++) {
-      array[i] = elements[i];
-    }
-    console.log(array);
-    array.sort((a, b) => a - b);
-    console.log(array);
-    array.splice(1, 4);
-    console.log(array);
+    elements = elements.trim().split(" ");
+    console.log(elements);
+    elements.sort((a, b) => +a - +b);
+    console.log(elements);
+    elements.splice(1, 3);
+    console.log(elements);
   }
 }
